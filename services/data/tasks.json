@@ -1,0 +1,72 @@
+{
+    "1": {
+        "description": "Match response codes to titles",
+        "data": [
+            200,
+            201,
+            400,
+            403,
+            404,
+            409,
+            500,
+            503
+        ],
+        "titles": [
+            "A: Service Unavailable",
+            "B: Forbidden",
+            "C: OK",
+            "D: Conflict",
+            "E: Created",
+            "F: Internal Server Error",
+            "G: Bad request",
+            "H: Not found"
+        ],
+        "response format": "response: ABCDEFGH",
+        "response location": "tasks/1/response",
+        "response method": "POST"
+    },
+    "2": {
+        "question": "Which of the following is not an HTTP method?",
+        "alternatives": [
+            "A: CREATE",
+            "B: POST",
+            "C: PUT",
+            "D: OPTION"
+        ],
+        "response format": "A",
+        "response location": "tasks/2/response",
+        "response method": "POST"
+    },
+    "3": {
+        "question": "Which of the following best describes the HTTP operation 'PUT'",
+        "alternatives": [
+            "A: This operation reads information from a record in the system.",
+            "B: This operation changes a record's information in the system.",
+            "C: This operation creates a new record in the datasystembase.",
+            "D: This operation updates an existing resource, but does not require sending the entire body with the request.",
+            "E: This operation removes a record from the system."
+        ],
+        "response format": "A",
+        "response location": "tasks/3/response",
+        "response method": "POST"
+    },
+    "4": {
+        "question": "Which of the following best describes the HTTP operation 'PATCH'",
+        "alternatives": [
+            "A: This operation reads information from a record in the system.",
+            "B: This operation changes a record's information in the system.",
+            "C: This operation creates a new record in the datasystembase.",
+            "D: This operation updates an existing resource, but does not require sending the entire body with the request.",
+            "E: This operation removes a record from the system."
+        ],
+        "response format": "A",
+        "response location": "tasks/4/response",
+        "response method": "POST"
+    },
+    "5": {
+        "description": "Open the code in app.js - ",
+        "response format": "No response required - build your own code",
+        "response location": null,
+        "response method": null
+    }
+}
