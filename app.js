@@ -74,7 +74,7 @@ app.post("/register", async (req, res) => {
 
     // Validate user input
     if (!(username && password)) {
-      res.status(400).send("All input is required");
+      return res.status(400).send("All input is required");
     }
 
     // check if user already exist
