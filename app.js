@@ -1,8 +1,8 @@
 require("dotenv").config();
-let db = require("./config/database")
+let db = require("./config/database");
 db.connect();
 const express = require("express");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const auth = require("./middleware/auth");
 const tasks = require("./services/task");
@@ -13,23 +13,20 @@ const Book = require("./model/book");
 
 // TODO
 // 1 - an endpoint to create a book-instance
-// 
-/* Helper code 
+app.post("/books/create", auth, async (req, res) => {
+  // Helper code
   const { author, title } = req.body;
   // Validate user input
   if (!(author && title)) {
-    return ??
+    return res.status(400).send("All book input is required");
   }
-
-      // Create book in our database
-      const book = await Book.create({
-        author: author,
-        title: title,
-
-      });
-  // return ??
-});*/
-
+  // Create book in our database
+  const book = await Book.create({
+    author: author,
+    title: title,
+  });
+  return res.status(201).json(book);
+});
 
 // 2 - a resouce to get all book instances
 
@@ -39,34 +36,31 @@ const Book = require("./model/book");
 
 // 5 - a way to delete book instace by id
 
-
-
 app.post("/welcome", auth, (req, res) => {
   res.status(200).send("Welcome 🙌 ");
 });
 
-app.get('/tasks/:id', auth, (req, res) => {
-  tasks.getTask(req.params.id, res)
-})
+app.get("/tasks/:id", auth, (req, res) => {
+  tasks.getTask(req.params.id, res);
+});
 
-app.get('/tasks', auth, (req, res) => {
-  tasks.listTasks(res)
-})
+app.get("/tasks", auth, (req, res) => {
+  tasks.listTasks(res);
+});
 
-app.post('/tasks/:id', auth, (req, res) => {
-  tasks.addTask(req.params.id, req, res)
-})
+app.post("/tasks/:id", auth, (req, res) => {
+  tasks.addTask(req.params.id, req, res);
+});
 
-app.post('/tasks/:id/response', auth, (req, res) => {
-  tasks.checkResponse(req.params.id, req, res)
-})
+app.post("/tasks/:id/response", auth, (req, res) => {
+  tasks.checkResponse(req.params.id, req, res);
+});
 
 // importing user context
 const User = require("./model/user");
 
 // Register
 app.post("/register", async (req, res) => {
-
   // Our register logic starts here
   try {
     // Get user input
@@ -95,13 +89,9 @@ app.post("/register", async (req, res) => {
     });
 
     // Create token
-    const token = jwt.sign(
-      { user_id: user._id },
-      process.env.TOKEN_KEY,
-      {
-        expiresIn: "3h",
-      }
-    );
+    const token = jwt.sign({ user_id: user._id }, process.env.TOKEN_KEY, {
+      expiresIn: "3h",
+    });
     // save user token
     user.token = token;
 
@@ -115,7 +105,6 @@ app.post("/register", async (req, res) => {
 
 // Login
 app.post("/login", async (req, res) => {
-
   // Our login logic starts here
   try {
     // Get user input
